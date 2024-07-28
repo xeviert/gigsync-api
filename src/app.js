@@ -4,6 +4,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+const authMiddleware = require('./middlewares/authMiddleware')
+const errorHandler = require('./middlewares/errorMiddleware')
+const notFoundHandler = require('./middlewares/notFoundHandler')
 const { JWT_SECRET } = require('./config'); // Importing configuration
 
 // Initialize express app
@@ -27,25 +30,17 @@ const artistRoutes = require('./routes/artistRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 
 app.use('/api/users', userRoutes);
+// app.use('/api/bookings', authMiddleware, bookingRoutes); // Protecting booking routes
+// app.use('/api/artists', authMiddleware, artistRoutes); // Protecting artist routes
+// app.use('/api/events', authMiddleware, eventRoutes); // Protecting event routes
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/artists', artistRoutes);
 app.use('/api/events', eventRoutes);
 
 // Handle 404 errors
-app.use((req, res, next) => {
-  const error = new Error('Not Found');
-  error.status = 404;
-  next(error);
-});
+app.use(notFoundHandler);
 
 // Error handling middleware
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message
-    }
-  });
-});
+app.use(errorHandler);
 
 module.exports = app;
