@@ -9,19 +9,23 @@ root-directory/
 │   │   ├── userRoutes.js
 │   │   ├── bookingRoutes.js
 │   │   ├── artistRoutes.js
-│   │   └── eventRoutes.js
+│   │   ├── eventRoutes.js
+│   │   ├── performanceRoutes.js
+│   │   └── salesRoutes.js
 │   ├── controllers/
 │   │   ├── userController.js
 │   │   ├── bookingController.js
 │   │   ├── artistController.js
 │   │   ├── eventController.js
-│   │   ├── performanceRoutes.js
-│   │   └── salesRoutes.js
+│   │   ├── performanceController.js
+│   │   └── salesController.js
 │   ├── models/
 │   │   ├── userModel.js
 │   │   ├── bookingModel.js
 │   │   ├── artistModel.js
-│   │   └── eventModel.js
+│   │   ├── eventModel.js
+│   │   ├── performanceModel.js
+│   │   └── salesModel.js
 │   ├── middlewares/
 │   │   ├── authMiddleware.js
 │   │   └── errorMiddleware.js
