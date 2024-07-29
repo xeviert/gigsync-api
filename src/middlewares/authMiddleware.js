@@ -1,6 +1,5 @@
-// authMiddleware.js
-const jwt = require('jsonwebtoken');
-const { JWT_SECRET, NODE_ENV } = require('../config');
+const { verifyToken } = require('../utils/jwtUtils');
+const { NODE_ENV } = require('../config');
 
 const authMiddleware = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
@@ -14,7 +13,7 @@ const authMiddleware = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = verifyToken(token);
     req.userId = decoded.userId;
     next();
   } catch (err) {

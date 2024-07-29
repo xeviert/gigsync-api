@@ -3,15 +3,6 @@
 root-directory/
 │
 ├── src/
-│   ├── db/
-│   │   └── knex.js
-│   ├── routes/
-│   │   ├── userRoutes.js
-│   │   ├── bookingRoutes.js
-│   │   ├── artistRoutes.js
-│   │   ├── eventRoutes.js
-│   │   ├── performanceRoutes.js
-│   │   └── salesRoutes.js
 │   ├── controllers/
 │   │   ├── userController.js
 │   │   ├── bookingController.js
@@ -19,6 +10,11 @@ root-directory/
 │   │   ├── eventController.js
 │   │   ├── performanceController.js
 │   │   └── salesController.js
+│   ├── db/
+│   │   └── knex.js
+│   ├── middlewares/
+│   │   ├── authMiddleware.js
+│   │   └── errorMiddleware.js
 │   ├── models/
 │   │   ├── userModel.js
 │   │   ├── bookingModel.js
@@ -26,9 +22,13 @@ root-directory/
 │   │   ├── eventModel.js
 │   │   ├── performanceModel.js
 │   │   └── salesModel.js
-│   ├── middlewares/
-│   │   ├── authMiddleware.js
-│   │   └── errorMiddleware.js
+│   ├── routes/
+│   │   ├── userRoutes.js
+│   │   ├── bookingRoutes.js
+│   │   ├── artistRoutes.js
+│   │   ├── eventRoutes.js
+│   │   ├── performanceRoutes.js
+│   │   └── salesRoutes.js
 │   ├── utils/
 │   │   ├── jwtUtils.js
 │   │   └── otherUtils.js

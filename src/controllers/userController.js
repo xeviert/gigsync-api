@@ -1,7 +1,7 @@
+// src/controllers/userController.js
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const { createUser, findUserByEmail, findUserById } = require('../models/userModel');
-const { JWT_SECRET } = require('../config');
+const { generateToken } = require('../utils/jwtUtils');
 
 exports.register = async (req, res) => {
   try {
@@ -9,7 +9,8 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await createUser({ username, email, password: hashedPassword });
-    res.status(201).json(newUser);
+    const token = generateToken(newUser.id);
+    res.status(201).json({ user: newUser, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -24,7 +25,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '3h' });
+    const token = generateToken(user.id);
     res.json({ token });
   } catch (error) {
     res.status(400).json({ error: error.message });
