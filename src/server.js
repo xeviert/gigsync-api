@@ -1,12 +1,9 @@
-// server.js
+require('dotenv').config(); // Load environment variables at the top
 const http = require('http');
 const socketIo = require('socket.io');
-const dotenv = require('dotenv');
 const app = require('./app'); // Importing app configuration
 const { PORT } = require('./config'); // Importing configuration variables
 const db = require('./db/knex'); // Importing Knex configuration
-
-dotenv.config(); // Load environment variables
 
 // Initialize the HTTP server with the express app
 const server = http.createServer(app);

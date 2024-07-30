@@ -1,7 +1,7 @@
 const db = require('../db/knex'); // Importing Knex instance
 
 const createUser = async ({ username, email, password }) => {
-  const newUser = await db('users').insert({ username, email, password }).returning('*');
+  const newUser = await db('users').insert({ email, password }).returning('*');
   return newUser[0];
 };
 

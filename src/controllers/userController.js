@@ -1,4 +1,3 @@
-// src/controllers/userController.js
 const bcrypt = require('bcrypt');
 const { createUser, findUserByEmail, findUserById } = require('../models/userModel');
 const { generateToken } = require('../utils/jwtUtils');
