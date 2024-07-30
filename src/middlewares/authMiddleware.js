@@ -3,7 +3,7 @@ const { NODE_ENV } = require('../config');
 
 const authMiddleware = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
-
+  console.log(token)
   if (!token) {
     const errorResponse = NODE_ENV === 'production'
       ? { error: 'Authentication required' }

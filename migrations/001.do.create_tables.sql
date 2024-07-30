@@ -23,7 +23,7 @@ CREATE TABLE events (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
-    venue VARCHAR(255) NOT NULL,
+    venue_id INTEGER REFERENCES users(id) NOT NULL,
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT current_timestamp,
     updated_at TIMESTAMP DEFAULT current_timestamp
