@@ -1,5 +1,5 @@
 {
-  "name": "gigsync",
+  "name": "gigsync-api",
   "version": "1.0.0",
   "description": "A CRM for booking live music events.",
   "main": "index.js",
