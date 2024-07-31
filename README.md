@@ -18,7 +18,7 @@ This repository contains the backend server for the Live Music Booking CRM proje
 To get started, clone the repository and install the necessary dependencies:
 
 ```sh
-git clone https://github.com/yourusername/live-music-booking-crm.git
+git clone https://github.com/xeviert/gigsync-api.git
 cd live-music-booking-crm
 npm install
 ```
