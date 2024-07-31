@@ -1,4 +1,4 @@
-const db = require('../db/knex'); // Importing Knex instance
+const db = require('../db/knex');
 
 const createEvent = async (data) => {
   const newEvent = await db('events').insert(data).returning('*');
