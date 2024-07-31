@@ -98,7 +98,7 @@ PUT /api/sales/:id: Update sales data for an event (protected)
 DELETE /api/sales/:id: Delete sales data for an event (protected)
 ```
 
-### Folder Structure
+## Folder Structure
 
       root-directory/
       │
@@ -139,3 +139,9 @@ DELETE /api/sales/:id: Delete sales data for an event (protected)
       ├── .env
       ├── package.json
       └── README.md
+
+### Contributing
+Contributions are welcome! Please read our contributing guidelines before submitting a pull request.
+
+### License
+This project is licensed under the MIT License. See the LICENSE file for more details.
