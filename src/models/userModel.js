@@ -1,4 +1,4 @@
-const db = require('../db/knex');
+const db = require('../db/knex'); // Ensure the correct path to your Knex instance
 
 const createUser = async ({ name, email, password, bio, city, role }) => {
   const newUser = await db('users').insert({ name, email, password, bio, city, role }).returning('*');
@@ -15,8 +15,14 @@ const findUserById = async (id) => {
   return user;
 };
 
+const getAllUsers = async () => {
+  const users = await db('users').select('id', 'name', 'bio', 'city', 'role');
+  return users;
+};
+
 module.exports = {
   createUser,
   findUserByEmail,
   findUserById,
+  getAllUsers, // Export the new method
 };

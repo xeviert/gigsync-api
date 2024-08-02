@@ -7,14 +7,16 @@ const passport = require('passport');
 const authMiddleware = require('./middlewares/authMiddleware')
 const errorHandler = require('./middlewares/errorMiddleware')
 const notFoundHandler = require('./middlewares/notFoundHandler')
-const { JWT_SECRET } = require('./config'); // Importing configuration
+const { JWT_SECRET, CLIENT_URL } = require('./config'); // Importing configuration
 
 // Initialize express app
 const app = express();
 
 // Middleware setup
-app.use(cors());
-app.use(morgan('dev'));
+app.use(cors({
+  origin: CLIENT_URL,
+  credentials: true,
+})); app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -30,12 +32,9 @@ const artistRoutes = require('./routes/artistRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 
 app.use('/api/users', userRoutes);
-// app.use('/api/bookings', authMiddleware, bookingRoutes); // Protecting booking routes
-// app.use('/api/artists', authMiddleware, artistRoutes); // Protecting artist routes
-// app.use('/api/events', authMiddleware, eventRoutes); // Protecting event routes
-app.use('/api/bookings', bookingRoutes);
-app.use('/api/artists', artistRoutes);
-app.use('/api/events', eventRoutes);
+app.use('/api/bookings', authMiddleware, bookingRoutes); // Protecting booking routes
+app.use('/api/artists', authMiddleware, artistRoutes); // Protecting artist routes
+app.use('/api/events', authMiddleware, eventRoutes); // Protecting event routes
 
 // Handle 404 errors
 app.use(notFoundHandler);

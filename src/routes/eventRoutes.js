@@ -4,13 +4,11 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
-// Public routes
 router.get('/', eventController.getAllEvents);
 router.get('/:id', eventController.getEventById);
 
-// Protected routes
-router.post('/', authMiddleware, eventController.createEvent);
-router.put('/:id', authMiddleware, eventController.updateEvent);
-router.delete('/:id', authMiddleware, eventController.deleteEvent);
+router.post('/', eventController.createEvent);
+router.put('/:id', eventController.updateEvent);
+router.delete('/:id', eventController.deleteEvent);
 
 module.exports = router;

@@ -9,8 +9,8 @@ router.get('/', performanceController.getAllPerformances);
 router.get('/:id', performanceController.getPerformanceById);
 
 // Protected routes
-router.post('/', authMiddleware, performanceController.createPerformance);
-router.put('/:id', authMiddleware, performanceController.updatePerformance);
-router.delete('/:id', authMiddleware, performanceController.deletePerformance);
+router.post('/', performanceController.createPerformance);
+router.put('/:id', performanceController.updatePerformance);
+router.delete('/:id', performanceController.deletePerformance);
 
 module.exports = router;

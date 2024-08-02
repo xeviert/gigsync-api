@@ -9,8 +9,8 @@ router.get('/', salesController.getAllSales);
 router.get('/:id', salesController.getSalesById);
 
 // Protected routes
-router.post('/', authMiddleware, salesController.createSales);
-router.put('/:id', authMiddleware, salesController.updateSales);
-router.delete('/:id', authMiddleware, salesController.deleteSales);
+router.post('/', salesController.createSales);
+router.put('/:id', salesController.updateSales);
+router.delete('/:id', salesController.deleteSales);
 
 module.exports = router;
