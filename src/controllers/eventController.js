@@ -5,6 +5,7 @@ exports.createEvent = async (req, res) => {
     const event = await createEvent(req.body);
     res.status(201).json(event);
   } catch (error) {
+    console.error('Error creating event:', error); // Log the error for debugging
     res.status(400).json({ error: error.message });
   }
 };
